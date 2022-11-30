@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import registerRootComponent from 'expo/build/launch/registerRootComponent';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function App() {
+function App() {
   return (
     <View style={styles.container}>
       <Text>Open up</Text>
@@ -19,3 +20,5 @@ export default function App() {
     </View>
   );
 }
+
+export default registerRootComponent(App);
