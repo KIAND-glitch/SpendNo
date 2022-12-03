@@ -11,7 +11,11 @@ export type RootTabParamListScreens = {
 export type RootStackParamListScreens = {
   Main: undefined;
   Landing: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
 };
+
+export type LandingScreenProps = StackScreenProps<RootStackParamListScreens>;
 
 // Combining tab nav props and stack nav props
 // https://reactnavigation.org/docs/typescript/

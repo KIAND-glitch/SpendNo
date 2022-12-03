@@ -1,10 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import LottieView from 'lottie-react-native';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Button, Text } from '@rneui/themed';
 import landingLottie from './landing-lottie.json';
+import { LandingScreenProps } from '~navigation/types';
 
-export default function Landing() {
+export default function Landing({ navigation }: LandingScreenProps) {
+  function signInPressHandler() {
+    navigation.navigate('SignIn');
+  }
+
   const animation = useRef(null);
   useEffect(() => {
     // You can control the ref programmatically, rather than using autoPlay
@@ -13,7 +18,7 @@ export default function Landing() {
   return (
     <View style={styles.appContainer}>
       <View>
-        <Text h1 style={{ padding: 10 }}>
+        <Text h1 style={styles.logoText}>
           Spend
           <Text h1 style={styles.logoNoText}>
             No
@@ -36,15 +41,16 @@ export default function Landing() {
           Track Money
         </Text>
         <View style={styles.buttonGroup}>
-          <Button
-            title="Sign In"
-            buttonStyle={styles.button}
-            containerStyle={styles.buttonContainer}
-            titleStyle={{ fontWeight: 'bold' }}
-          />
+          <Pressable>
+            <Button
+              title="Sign In"
+              containerStyle={styles.buttonContainer}
+              titleStyle={{ fontWeight: 'bold' }}
+              onPress={signInPressHandler}
+            />
+          </Pressable>
           <Button
             title="Sign Up"
-            buttonStyle={styles.button}
             containerStyle={styles.buttonContainer}
             titleStyle={{ fontWeight: 'bold' }}
           />
@@ -56,6 +62,7 @@ export default function Landing() {
 
 const styles = StyleSheet.create({
   logoText: {
+    padding: 10,
     fontWeight: '700',
   },
   logoNoText: {
@@ -71,12 +78,6 @@ const styles = StyleSheet.create({
     padding: 10,
     display: 'flex',
     flexDirection: 'row',
-  },
-  button: {
-    backgroundColor: 'black',
-    borderWidth: 2,
-    borderColor: 'white',
-    borderRadius: 15,
   },
   buttonContainer: {
     width: 150,
