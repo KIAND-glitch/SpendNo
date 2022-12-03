@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Home from '../components/Home';
 import Notifications from '../components/Notifications';
 import Profile from '../components/Profile';
+import Dashboard from '../components/Home/Dashboard';
+import { RootTabParamListScreens } from './types';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootTabParamListScreens>();
 
 function Tabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Dashboard"
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
       }}
@@ -26,8 +27,8 @@ function Tabs() {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Dashboard"
+        component={Dashboard}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
