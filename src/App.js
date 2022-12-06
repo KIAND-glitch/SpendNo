@@ -1,5 +1,5 @@
 import React from 'react';
-import registerRootComponent from 'expo/build/launch/registerRootComponent';
+import { registerRootComponent } from 'expo';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { Platform } from 'react-native';
